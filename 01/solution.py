@@ -9,19 +9,27 @@ def readfile(filename):
     return array
 
 def determine_frequency_sum(array):
-    cache = {}
     frequency = 0
     for x in array:
+        frequency += x
+    return frequency
+
+def determine_rep_frequency(array):
+    cache= {}
+    frequency = 0
+    for x in cycle(array):
         frequency += x
         if frequency in cache:
             return frequency
         else:
             cache[frequency] = 1
+
     
 
 def main(filename):
     array = readfile(filename)
     print(determine_frequency_sum(array))
+    print(determine_rep_frequency(array))
 
 if __name__ == '__main__':
     if len(argv) == 2:
